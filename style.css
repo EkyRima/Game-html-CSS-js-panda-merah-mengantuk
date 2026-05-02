@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Mali:wght@400;700&display=swap');
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    /* Disable blue tap highlight on mobile/trebedit */
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Mali', cursive;
+    background-color: #1a1a1a; /* Fallback color */
+    color: #ffffff;
+    overflow: hidden; /* Mencegah scroll */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -ms-touch-action: none;
+    touch-action: none;
+}
+
+.screen {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease-in-out;
+    padding: 2rem;
+    z-index: 1;
+}
+
+.screen.active {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 10;
+}
+
+.bg-img {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    background-color: #2b1d38; /* Warna latar default puitis */
+}
+
+video {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    background: #000;
+}
+
+#text-trigger-container {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    z-index: 5;
+    background: rgba(0, 0, 0, 0.4); /* Latar gelap sedikit transparan untuk visibilitas teks, membiarkan last frame video terlihat */
+    backdrop-filter: blur(2px);
+    overflow: hidden;
+}
+
+.hidden { 
+    display: none !important; 
+}
+
+/* Typography Khusus Mobile & Desktop Horizontal */
+h1 { 
+    font-size: clamp(36px, 8vw, 70px);
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8); 
+    line-height: 1.2;
+    margin-bottom: 1.5rem; 
+    font-weight: 700;
+}
+
+p { 
+    font-size: clamp(24px, 5vw, 40px); 
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.8); 
+    line-height: 1.4;
+}
+
+button {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: clamp(28px, 6vw, 48px);
+    font-weight: 700;
+    cursor: pointer;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    line-height: 1.5;
+}
+
+/* Tombol Pemicu Teks Spesial */
+.text-trigger-btn {
+    position: absolute;
+    width: auto !important;
+    max-width: initial !important;
+    padding: 10px 25px !important;
+    background: rgba(0,0,0,0.5) !important;
+    border: 2px solid rgba(255,255,255,0.2) !important;
+    border-radius: 30px;
+    white-space: nowrap;
+    transition: opacity 0.5s ease;
+}
+
+.text-trigger-btn.fadeOut {
+    opacity: 0 !important;
+    pointer-events: none;
+    transform: scale(1.5);
+    transition: all 0.5s ease-out;
+}
+
+/* Animasi Aneka Ragam (Whimsical) */
+@keyframes floatAnim {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+.anim-float { animation: floatAnim 3s ease-in-out infinite; }
+
+@keyframes pulseAnim {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.85; }
+}
+.anim-pulse { animation: pulseAnim 2s infinite; }
+
+@keyframes wobbleAnim {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg) scale(1.05); }
+    75% { transform: rotate(5deg) scale(1.05); }
+}
+.anim-wobble { animation: wobbleAnim 2.5s infinite; }
+
+@keyframes bounceAnim {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.05); }
+}
+.anim-bounce { animation: bounceAnim 2s infinite; }
+
+@keyframes shakeAnim {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px) rotate(-3deg); }
+    75% { transform: translateX(5px) rotate(3deg); }
+}
+.anim-shake { animation: shakeAnim 0.2s infinite; }

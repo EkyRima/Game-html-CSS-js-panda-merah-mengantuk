@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Petualangan Red Panda</title>
+  <link rel="stylesheet" href="./style.css" />
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <!-- Audio BGM -->
+  <audio id="bgm-player"></audio>
+
+  <!-- Layar Pembuka -->
+  <div id="screen-intro" class="screen active">
+    <h1 class="anim-float">Petualangan Red Panda</h1>
+    <p class="anim-pulse" style="animation-delay: 1s; opacity: 0; animation-fill-mode: forwards;">dibuat oleh Eky Rima</p>
+  </div>
+
+  <!-- Scene Awal -->
+  <div id="screen-start" class="screen">
+    <!-- Fallback background image: Anda bisa menambahkan file bg-start.jpg ke dalam folder -->
+    <img src="bg-start.jpg" alt="Background Start" class="bg-img" onerror="this.style.display='none'">
+    <button id="btn-start" class="anim-wobble">Mulai Menjelajah</button>
+  </div>
+
+  <!-- Scene Game (Video & Text) -->
+  <div id="screen-game" class="screen">
+    <video id="game-video" playsinline webkit-playsinline></video>
+    <div id="text-trigger-container" class="hidden">
+      <button id="btn-next-story" class="anim-bounce"></button>
+    </div>
+  </div>
+
+  <!-- Layar Tamat -->
+  <div id="screen-end" class="screen">
+    <h1 class="anim-float">Tamat</h1>
+    <p class="anim-pulse">Dibuat oleh Eky Rima</p>
+    <p class="anim-wobble" style="font-size: clamp(20px, 4vw, 32px); margin-top: 2rem;">Mungkin cerita akan berlanjut dengan dukungan kalian.</p>
+  </div>
+
+  <script src="./script.js"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
+
